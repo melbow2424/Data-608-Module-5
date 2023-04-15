@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+    <title>Reverse Word and Multiplication Table</title>
+  </head>
+  <body>
+    <h1>Reverse Word and Multiplication Table</h1>
+    
+    <h2>Reverse Word</h2>
+    <label for="word-input">Type a word:</label>
+    <input id="word-input" type="text">
+    <button onclick="reverseWord()">Reverse</button>
+    <p>Reversed word: <span id="reversed-word"></span></p>
+
+    <h2>Multiplication Table</h2>
+    <label for="number-input">Type a number:</label>
+    <input id="number-input" type="number">
+    <button onclick="generateMultiplicationTable()">Generate Table</button>
+    <br>
+    <br>
+    <div id="multiplication-table"></div>
+
+
+    <script>
+      function reverseWord() {
+        wordInput = document.getElementById("word-input");
+        reversedWordSpan = document.getElementById("reversed-word");
+        reversedWord = wordInput.value.split("").reverse().join("");
+        reversedWordSpan.innerText = reversedWord;
+      }
+
+      function generateMultiplicationTable() {
+        numberInput = document.getElementById("number-input");
+        multiplicationTableDiv = document.getElementById("multiplication-table");
+        number = parseInt(numberInput.value);
+        let tableHTML = "<table>";
+        for (let i = 1; i <= 5; i++) {
+            tableHTML += "<tr>";
+            for (let j = 1; j <= 4; j++) {
+                tableHTML += "<td>" + (number * (j + (i - 1) * 4)) + "</td>";
+                }
+            tableHTML += "</tr>";
+            }
+        tableHTML += "</table>";
+        multiplicationTableDiv.innerHTML = tableHTML;
+        }
+
+      </script>
+
+
+</body>
+</html>
